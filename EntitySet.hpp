@@ -16,6 +16,8 @@ public:
     void print();    // prints all instances of this Entity.
     std::vector<EntityInstance> getEntityInstances(); // returns "instances"
     // more member functions here.
+    void printInJSON(int numSpaces);
+    void printInCSV();
 
 private:
     std::vector<EntityInstance> instances;

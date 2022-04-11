@@ -17,6 +17,8 @@ public:
     double numberValue();
     std::string stringValue();
     std::string attributeName();
+    void printInJSON(int numSpaces);
+    void printInCSV();
 
 private:
     std::string _attributeName, _attributeStringValue;

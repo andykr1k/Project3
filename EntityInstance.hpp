@@ -15,7 +15,8 @@ public:
     std::vector<std::string> attributeNames();
     void print();   // prints this object.
     // more member functions here when necessary.
-
+    void printInJSON(int numSpaces);
+    void printInCSV();
     double close();   // an accessor function that return the
     // value associated with an attribute. In this case, the value.
     // of attribute, Close. You will need to add more such functions
