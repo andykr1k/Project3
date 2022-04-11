@@ -12,10 +12,9 @@ class EntitySet {
 public:
     EntitySet();
 
-    void addEntity(EntityInstance &);
-    void print();    // prints all instances of this Entity.
-    std::vector<EntityInstance> getEntityInstances(); // returns "instances"
-    // more member functions here.
+    void addEntity(EntityInstance &instance) { instances.push_back(instance); };
+    void print();
+    std::vector<EntityInstance> getEntityInstances() { return instances; };
     void printInJSON(int numSpaces);
     void printInCSV(std::vector<std::string>keyValues);
 

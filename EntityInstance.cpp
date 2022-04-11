@@ -4,3 +4,14 @@
 
 #include "EntityInstance.hpp"
 
+void EntityInstance::print() {
+
+}
+
+void EntityInstance::printInJSON(int numSpaces) {
+
+}
+
+void EntityInstance::printInCSV() {
+
+}

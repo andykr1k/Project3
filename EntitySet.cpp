@@ -3,3 +3,15 @@
 //
 
 #include "EntitySet.hpp"
+
+void EntitySet::print() {
+
+}
+
+void EntitySet::printInJSON(int numSpaces) {
+
+}
+
+void EntitySet::printInCSV(std::vector<std::string> keyValues) {
+
+}

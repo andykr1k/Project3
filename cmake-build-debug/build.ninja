@@ -114,6 +114,12 @@ build CMakeFiles/Project3.dir/EquityStats.cpp.o: CXX_COMPILER__Project3_Debug /U
   OBJECT_DIR = CMakeFiles/Project3.dir
   OBJECT_FILE_DIR = CMakeFiles/Project3.dir
 
+build CMakeFiles/Project3.dir/JSONParser.cpp.o: CXX_COMPILER__Project3_Debug /Users/andrew/Desktop/Personal/CLion/Project3/JSONParser.cpp || cmake_object_order_depends_target_Project3
+  DEP_FILE = CMakeFiles/Project3.dir/JSONParser.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  OBJECT_DIR = CMakeFiles/Project3.dir
+  OBJECT_FILE_DIR = CMakeFiles/Project3.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Project3
@@ -122,7 +128,7 @@ build CMakeFiles/Project3.dir/EquityStats.cpp.o: CXX_COMPILER__Project3_Debug /U
 #############################################
 # Link the executable Project3
 
-build Project3: CXX_EXECUTABLE_LINKER__Project3_Debug CMakeFiles/Project3.dir/main.cpp.o CMakeFiles/Project3.dir/Pair.cpp.o CMakeFiles/Project3.dir/EntityInstance.cpp.o CMakeFiles/Project3.dir/EntitySet.cpp.o CMakeFiles/Project3.dir/JSONToken.cpp.o CMakeFiles/Project3.dir/JSONTokenizer.cpp.o CMakeFiles/Project3.dir/EquityStats.cpp.o
+build Project3: CXX_EXECUTABLE_LINKER__Project3_Debug CMakeFiles/Project3.dir/main.cpp.o CMakeFiles/Project3.dir/Pair.cpp.o CMakeFiles/Project3.dir/EntityInstance.cpp.o CMakeFiles/Project3.dir/EntitySet.cpp.o CMakeFiles/Project3.dir/JSONToken.cpp.o CMakeFiles/Project3.dir/JSONTokenizer.cpp.o CMakeFiles/Project3.dir/EquityStats.cpp.o CMakeFiles/Project3.dir/JSONParser.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk
   OBJECT_DIR = CMakeFiles/Project3.dir
   POST_BUILD = :
