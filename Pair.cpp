@@ -21,7 +21,7 @@ std::string Pair::attributeName() {
 }
 
 void Pair::printInJSON(int numSpaces) {
-    std::cout << ' " ' << _attributeName << ' " ' <<" : " << _attributeStringValue << std::endl;
+    std::cout << "\"" << _attributeName << "\""  <<" : " << _attributeStringValue << std::endl;
 }
 
 void Pair::printInCSV() {
