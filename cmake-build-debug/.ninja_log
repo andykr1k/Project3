@@ -1,10 +1,14 @@
 # ninja log v5
-1	279	1649657243356111857	CMakeFiles/Project3.dir/EntitySet.cpp.o	5d086e573c4df911
-0	295	1649657243371206566	CMakeFiles/Project3.dir/Pair.cpp.o	a2ea16a55974e5fe
 0	302	1649657243379838400	CMakeFiles/Project3.dir/EntityInstance.cpp.o	1e23113417b141cf
 1	398	1649657243475697927	CMakeFiles/Project3.dir/JSONToken.cpp.o	dd77d3a8ce433b31
+0	295	1649657243371206566	CMakeFiles/Project3.dir/Pair.cpp.o	a2ea16a55974e5fe
+1	279	1649657243356111857	CMakeFiles/Project3.dir/EntitySet.cpp.o	5d086e573c4df911
 2	417	1649657243494377775	CMakeFiles/Project3.dir/JSONTokenizer.cpp.o	d64da0d052b137ab
-0	439	1649657243516769343	CMakeFiles/Project3.dir/main.cpp.o	64a1bf80e78ebb9
-439	475	1649657243554155122	Project3	13748baffbebb08b
 1	287	1649657294077520937	CMakeFiles/Project3.dir/main.cpp.o	64a1bf80e78ebb9
 287	322	1649657294113798988	Project3	13748baffbebb08b
+2	23	1649706699936032535	CMakeFiles/Project3.dir/EquityStats.cpp.o	700c93a24fe599a
+1	249	1649706700159940473	CMakeFiles/Project3.dir/EntityInstance.cpp.o	1e23113417b141cf
+1	249	1649706700160856213	CMakeFiles/Project3.dir/EntitySet.cpp.o	5d086e573c4df911
+1	254	1649706700166513905	CMakeFiles/Project3.dir/Pair.cpp.o	a2ea16a55974e5fe
+1	336	1649706700247572859	CMakeFiles/Project3.dir/main.cpp.o	64a1bf80e78ebb9
+336	374	1649706700287607946	Project3	3179226e7af37940

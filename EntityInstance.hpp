@@ -17,7 +17,21 @@ public:
     // more member functions here when necessary.
     void printInJSON(int numSpaces);
     void printInCSV();
-    double close();   // an accessor function that return the
+
+    double close();
+    double open();
+    double high();
+    double low();
+    double volume();
+    double dividends();
+    double stocksplits();
+    std::string date();
+    std::string timestamp();
+    double ema12();
+    double ema26();
+    double macd();
+    double signal();
+    // an accessor function that return the
     // value associated with an attribute. In this case, the value.
     // of attribute, Close. You will need to add more such functions
     // to this class.
