@@ -29,16 +29,16 @@ int main(int argc, char *argv[]) {
     EntitySet set = parser3.parseJSONEntity();
     //set.printInJSON(5);
 
-    string name = "Andy";
-    double number = 101.101;
-    Pair pair = Pair(name,number);
-    EntityInstance instance1 = set.getEntityInstances().at(1);
-    instance1.addPair(pair);
-    set.changeEntity(1,instance1);
+    //string name = "Andy";
+    //double number = 101.101;
+    //Pair pair = Pair(name,number);
+    //EntityInstance instance1 = set.getEntityInstances().at(1);
+    //instance1.addPair(pair);
+    //set.changeEntity(1,instance1);
     set.printInJSON(5);
-    cout << set.getEntityInstances().at(0).getClose() << endl;
+    //cout << set.getEntityInstances().at(0).getClose() << endl;
 
-    std::vector<string> keys = {"Date", "Close", "Volume"};
+    std::vector<string> keys = {"Date","Open","High","Low","Close","Volume","EMA-12","EMA-26","MACD","Signal"};
     set.printInCSV(keys);
     cout << endl;
     set.getEntityInstances().at(0).printInCSV(keys);
