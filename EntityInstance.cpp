@@ -9,7 +9,7 @@ void EntityInstance::print() {
 }
 
 void EntityInstance::printInJSON(int numSpaces) {
-    std::cout << "{";
+    std::cout << "   {" << std::endl;
     for (int i = 0; i < entityPairs.size(); i++){
 
         Pair pair = entityPairs.at(i);
@@ -18,7 +18,7 @@ void EntityInstance::printInJSON(int numSpaces) {
             std::cout << "," << std::endl;
         }
     }
-    std::cout << "}";
+    std::cout << std::endl << "   }";
 }
 
 void EntityInstance::printInCSV() {

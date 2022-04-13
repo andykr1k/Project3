@@ -22,9 +22,9 @@ std::string Pair::attributeName() {
 
 void Pair::printInJSON(int numSpaces) {
     if (_attributeStringValue.empty()){
-        std::cout << std::fixed << "     \"" << _attributeName << "\""  <<" : " << _attributeNumberValue << std::endl;
+        std::cout << std::fixed << "     \"" << _attributeName << "\""  <<" : " << _attributeNumberValue;
     } else {
-        std::cout << "     \"" << _attributeName << "\""  <<" : " << _attributeStringValue << std::endl;
+        std::cout << "     \"" << _attributeName << "\""  <<" : " << _attributeStringValue;
     }
 }
 

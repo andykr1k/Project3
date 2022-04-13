@@ -19,6 +19,7 @@ public:
     void printInJSON(int numSpaces);
     void printInCSV();
 
+    /*
     double getClose() { return close; };
     double getOpen() { return open; };
     double getHigh() { return high; };
@@ -32,6 +33,7 @@ public:
     double getEma26() { return ema26; };
     double getMacd() { return macd; };
     double getSignal() { return signal; };
+     */
 
     // an accessor function that return the
     // value associated with an attribute. In this case, the value.
@@ -40,19 +42,6 @@ public:
 private:
     std::vector<Pair> entityPairs;
     int numPairs;
-    double close;
-    double open;
-    double high;
-    double low;
-    double volume;
-    double dividends;
-    double stocksplits;
-    std::string date;
-    std::string timestamp;
-    double ema12;
-    double ema26;
-    double macd;
-    double signal;
 };
 
 

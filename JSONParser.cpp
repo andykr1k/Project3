@@ -1,53 +1,46 @@
-//
-// Created by Andrew Krikorian on 4/11/22.
-//
-#include <fstream>
-#include <iostream>
 #include "JSONParser.hpp"
+#include "Pair.hpp"
+#include "JSONTokenizer.hpp"
+#include <cstdlib>
+#include <string>
+#include <memory>
+using namespace std;
+
 
 Pair JSONParser::parseAPair() {
-    std::string name1;
-    std::string valueString;
-    std::string colon;
-    double value;
 
     JSONToken token = tokenizer.getToken();
-    if( ! token.isQuote() ) {
-        std::cout << "Error: JSONParser::parseJSONpair: Expected a qoute but found" << std::endl;
-        token.print();
-        std::cout << "Terminating..." << std::endl;
-        exit(1);
-    }
-    token = tokenizer.getToken();
-    name1 = token.getWord();
+    string name;
 
+    //grabs name for token
     token = tokenizer.getToken();
-    if( ! token.isColon() ) {
-        std::cout << "Error: JSONParser::parseJSONpair: Expected a colon but found" << std::endl;
-        token.print();
-        std::cout << "Terminating..." << std::endl;
-        exit(1);
-    }
-    //token = tokenizer.getToken();
-    do {
-        token = tokenizer.getToken();
+    name = token.getWord();
+
+    //grabs the uselsess colon
+    token = tokenizer.getToken();
+    string colon = token.getWord();
+
+    //tokenizer.getToken();
+    string secondName;
+    double value;
+    token = tokenizer.getToken();
+    if (token.isNumber()){
         value = token.getNumber();
-    } while ( token.isNumber());
-
-    do {
-        token = tokenizer.getToken();
-        valueString = token.getWord();
-    } while ( token.isQuote() );
-
-    if ( valueString.empty() ){
-        Pair pair1(name1, value);
-        pair1.printInJSON(5);
-        return pair1;
-    } else {
-        Pair pair1(name1, valueString);
-        pair1.printInJSON(5);
-        return pair1;
     }
+    else{
+        token = tokenizer.getToken();
+        secondName = token.getWord();
+    }
+
+    if(secondName.empty()){
+        Pair pair(name,value);
+        return pair;
+    }
+    else{
+        Pair pair(name, secondName);
+        return pair;
+    }
+
 }
 
 EntityInstance JSONParser::parseJSONObject() {
@@ -79,7 +72,7 @@ EntitySet JSONParser::parseJSONEntity() {
 
     JSONToken token = tokenizer.getToken();
     if( ! token.isOBracket() ) {
-        std::cout << "Error: JSONParser::parseJSONEntity: Expected an open bracket, but found" << std::endl;
+        std::cout << "Error: JSONParser::parseJSONObject: Expected an open brace, but found" << std::endl;
         token.print();
         std::cout << "Terminating..." << std::endl;
         exit(1);
@@ -92,11 +85,12 @@ EntitySet JSONParser::parseJSONEntity() {
     } while( token.isComma() );
 
     if( ! token.isCBracket() ) {
-        std::cout << "Error: JSONParser::parseJSONEntity: Expected an close bracket, but found" << std::endl;
+        std::cout << "Error: JSONParser::parseJSONObject: Expected an close brace, but found" << std::endl;
         token.print();
         std::cout << "Terminating..." << std::endl;
         exit(1);
     }
+    set.printInJSON(5);
     return set;
 }
 

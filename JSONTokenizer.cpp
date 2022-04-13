@@ -1,59 +1,91 @@
-//
-// Created by Andrew Krikorian on 3/9/22.
-//
-#include <string>
-#include <iostream>
-#include <fstream>
 #include "JSONTokenizer.hpp"
 
-JSONTokenizer::JSONTokenizer(string inputFile): inputFileName{inputFile} {
+#include <fstream>
+#include <iostream>
+#include "JSONToken.hpp"
+#include <cstdlib>
+#include <string>
+
+JSONTokenizer::JSONTokenizer(std::string inputFile): inputFileName{inputFile}{
     inputStream.open(inputFile, std::ios::in);
 }
 
-bool JSONTokenizer::isSymbol(char c){
-    return c == '[' || c == ']' || c == '{' || c == '}' || c == ':' || c == ',' || c == '"' || c == '.' || c == '-';
+bool JSONTokenizer::isSymbol(char c) {
+
+    if(c == ',' || c == ':' || c == '{' || c == '}' || c == '[' || c == ']' || c == '"' || c== '-' || c=='.') {
+
+        return true;
+    }
+    else
+        return false;
 }
 
-
 JSONToken JSONTokenizer::getToken() {
-    if (!inputStream.is_open()){
-        cout << "Error: Input Stream in Tokenizer" << endl;
-        exit(3);
+    if(!inputStream.is_open()){
+        std::cout << "Input stream in JSONTokenizer::getToken is not open. Terminating...\n";
+        exit(4);
     }
 
     char c;
     inputStream >> c;
-
-    if ( inputStream.eof() ){
+    if ( inputStream.eof()){
         JSONToken token;
         token.makeEOF();
         return token;
     }
 
-    if ( isSymbol(c) ){
+    if(isSymbol(c)){
+
         JSONToken token;
+        //cout << c << endl;
         token.makeSymbol(c);
         return token;
     }
 
-    if ( isdigit(c) ){
+    if( isdigit(c) ){
         inputStream.putback(c);
-        double number;
+        string number;
         inputStream >> number;
-        JSONToken token;
-        token.makeNumber(number);
-        return token;
+        if(number[number.length()-1] == ',') {
+            if (isdigit(number[number.length() - 2])) {
+                inputStream.putback(number[number.length() - 1]);
+                JSONToken token;
+                token.makeNumber(stod(number));
+                return token;
+            } else if (number[number.length() - 2] == '"') {
+                inputStream.putback(number[number.length() - 1]);
+                number = number.substr(0, number.length() - 2);
+                JSONToken token;
+                token.makeWord(number);
+                return token;
+            }
+        }
+        else {
+            if (isdigit(number[number.length() - 1])) {
+                JSONToken token;
+                token.makeNumber(stod(number));
+                return token;
+            } else if (number[number.length() - 1] == '"') {
+                number = number.substr(0, number.length() - 1);
+                JSONToken token;
+                token.makeWord(number);
+                return token;
+            }
+        }
     }
+
+
 
     inputStream.putback(c);
     string word;
-    while (getline(inputStream, word, '"') ) {
+    while (getline(inputStream, word, '"')) {
         JSONToken token;
         token.makeWord(word);
         return token;
     }
 
-    cout << "Unexpected Character" << c << endl;
-    cout << "Terminating.." << endl;
+    std::cout << "Unexpected character in input ->" << c << "<-\n";
+    std::cout << "Terminating...\n";
     exit(5);
+
 }
