@@ -8,10 +8,13 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include "EntitySet.hpp"
 using namespace std;
 
 class EquityStats {
 public:
+    EquityStats( EntityInstance instanceOfEntitySet ): attributesToPrint(){};
+
     double calculateExponentialMovingAverage(int days);
     double calculateMACD();
     double calculateSignal(int days);

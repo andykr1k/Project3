@@ -11,13 +11,11 @@ JSONTokenizer::JSONTokenizer(std::string inputFile): inputFileName{inputFile}{
 }
 
 bool JSONTokenizer::isSymbol(char c) {
-
     if(c == ',' || c == ':' || c == '{' || c == '}' || c == '[' || c == ']' || c == '"' || c== '-' || c=='.') {
-
         return true;
-    }
-    else
+    } else {
         return false;
+    }
 }
 
 JSONToken JSONTokenizer::getToken() {
@@ -35,9 +33,7 @@ JSONToken JSONTokenizer::getToken() {
     }
 
     if(isSymbol(c)){
-
         JSONToken token;
-        //cout << c << endl;
         token.makeSymbol(c);
         return token;
     }
@@ -73,8 +69,6 @@ JSONToken JSONTokenizer::getToken() {
             }
         }
     }
-
-
 
     inputStream.putback(c);
     string word;

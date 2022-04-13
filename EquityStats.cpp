@@ -17,8 +17,12 @@ double EquityStats::calculateSignal(int days) {
     return calculateExponentialMovingAverage(days);
 }
 
-void EquityStats::print(vector<string> attributes){
-    for (int i =0; i < attributes.size(); i++){
+void EquityStats::print(vector<string> attributesToPrint){
+/*    for (int i = 0; i < attributesToPrint.size(); i++){
+        for (int k = 0; i < ; k++){
+            if (attributesToPrint.at(i) == entityPairs.at(k).attributeName()){
 
-    }
+            }
+        }
+    }*/
 }

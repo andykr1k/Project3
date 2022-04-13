@@ -29,13 +29,9 @@ void Pair::printInJSON(int numSpaces) {
 }
 
 void Pair::printInCSV(bool name) {
-    if (name){
-        std::cout << _attributeName << ",";
+    if (_attributeStringValue.empty()){
+        std::cout << std::fixed << _attributeNumberValue;
     } else {
-        if (_attributeStringValue.empty()) {
-            std::cout << std::fixed << std::setprecision(4) << _attributeNumberValue << ",";
-        } else {
-            std::cout << _attributeStringValue << ",";
-        }
+        std::cout << _attributeStringValue;
     }
 }

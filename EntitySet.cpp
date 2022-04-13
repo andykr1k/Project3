@@ -18,9 +18,14 @@ void EntitySet::printInJSON(int numSpaces) {
             std::cout << "," << std::endl;
         }
     }
-    std::cout << std::endl << "]";
+    std::cout << std::endl << "]" << std::endl;
 }
 
 void EntitySet::printInCSV(std::vector<std::string> keyValues) {
-
+    for (int i = 0; i < keyValues.size(); i++){
+        std::cout << keyValues.at(i);
+        if ( i < keyValues.size() - 1) {
+            std::cout << ",";
+        }
+    }
 }

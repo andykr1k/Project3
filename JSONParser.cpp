@@ -90,7 +90,6 @@ EntitySet JSONParser::parseJSONEntity() {
         std::cout << "Terminating..." << std::endl;
         exit(1);
     }
-    set.printInJSON(5);
     return set;
 }
 

@@ -11,37 +11,29 @@
 class EntityInstance {
 public:
     void addPair(Pair &pair) { entityPairs.push_back(pair); };
-    int numAttributes() { return numPairs; };
+    int numAttributes() { return entityPairs.size(); };
 
-    std::vector<std::string> attributeNames();
     void print();
 
     void printInJSON(int numSpaces);
-    void printInCSV();
+    void printInCSV(std::vector<std::string>keyValues);
 
-    /*
-    double getClose() { return close; };
-    double getOpen() { return open; };
-    double getHigh() { return high; };
-    double getLow() { return low; };
-    double getVolume() { return volume; };
-    double getDividends() { return dividends; };
-    double getStocksplits() { return stocksplits; };
-    std::string getDate() { return date; };
-    std::string getTimestamp() { return timestamp; };
-    double getEma12() { return ema12; };
-    double getEma26() { return ema26; };
-    double getMacd() { return macd; };
-    double getSignal() { return signal; };
-     */
+    double getClose();
+    double getOpen();
+    double getHigh();
+    double getLow();
+    double getVolume();
+    double getDividends();
+    double getStocksplits();
+    std::string getDate();
+    std::string getTimestamp();
+    double getEma12();
+    double getEma26();
+    double getMacd();
+    double getSignal();
 
-    // an accessor function that return the
-    // value associated with an attribute. In this case, the value.
-    // of attribute, Close. You will need to add more such functions
-    // to this class.
 private:
     std::vector<Pair> entityPairs;
-    int numPairs;
 };
 
 
