@@ -32,7 +32,6 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    //set.printInJSON(5);
 
     //string name = "Andy";
     //double number = 101.101;
@@ -41,12 +40,6 @@ int main(int argc, char *argv[]) {
     //instance1.addPair(pair);
     //set.changeEntity(1,instance1);
     //set.printInJSON(5);
-    //cout << set.getEntityInstances().at(0).getClose() << endl;
 
-    //std::vector<string> keys = {"Date","Open","High","Low","Close","Volume","EMA-12","EMA-26","MACD","Signal"};
-    //set.printInCSV(keys);
-    //set.printInJSON(5);
-    //cout << endl;
-    //set.getEntityInstances().at(0).printInCSV(keys);
     return 0;
 }
