@@ -10,23 +10,28 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    /*std::ifstream inputStream;
-    inputStream.open(argv[1], std::ios::in);    // open for reading
-    if( ! inputStream.is_open()) {
-        std::cout << "Unable top open " << argv[1] << ". Terminating...";
-        exit(2);
+    if ( argc != 3 ){
+        cout << "Error: Missing a parameter - argv[1]:" << argv[1] << ", argv[2]:" << argv[2] << endl;
     }
-    inputStream.close();
 
-    JSONTokenizer jsonTokenizer(argv[1]); // The Tokenizer opens and reads from the input file.
-    JSONToken token = jsonTokenizer.getToken();
-    while( ! token.endOfFile() ) {
-        token.print();
-        token = jsonTokenizer.getToken();
-    }*/
-
-    JSONParser parser3("inputJSONTest.json");
+    JSONParser parser3(argv[2]);
     EntitySet set = parser3.parseJSONEntity();
+
+    string argument = argv[1];
+
+    if (argument == "-json"){
+        set.printInJSON(5);
+    }
+    if (argument == "-csv"){
+        std::vector<string> keys = {"Date","Open","High","Low","Close","Volume","EMA-12","EMA-26","MACD","Signal"};
+        set.printInCSV(keys);
+        cout << endl;
+        for (int i = 0; i < set.getEntityInstances().size(); i++) {
+            set.getEntityInstances().at(i).printInCSV(keys);
+            cout << endl;
+        }
+    }
+
     //set.printInJSON(5);
 
     //string name = "Andy";
@@ -35,12 +40,13 @@ int main(int argc, char *argv[]) {
     //EntityInstance instance1 = set.getEntityInstances().at(1);
     //instance1.addPair(pair);
     //set.changeEntity(1,instance1);
-    set.printInJSON(5);
+    //set.printInJSON(5);
     //cout << set.getEntityInstances().at(0).getClose() << endl;
 
-    std::vector<string> keys = {"Date","Open","High","Low","Close","Volume","EMA-12","EMA-26","MACD","Signal"};
-    set.printInCSV(keys);
-    cout << endl;
-    set.getEntityInstances().at(0).printInCSV(keys);
+    //std::vector<string> keys = {"Date","Open","High","Low","Close","Volume","EMA-12","EMA-26","MACD","Signal"};
+    //set.printInCSV(keys);
+    //set.printInJSON(5);
+    //cout << endl;
+    //set.getEntityInstances().at(0).printInCSV(keys);
     return 0;
 }

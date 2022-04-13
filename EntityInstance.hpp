@@ -18,6 +18,7 @@ public:
     void printInJSON(int numSpaces);
     void printInCSV(std::vector<std::string>keyValues);
 
+/*
     double getClose();
     double getOpen();
     double getHigh();
@@ -31,6 +32,7 @@ public:
     double getEma26();
     double getMacd();
     double getSignal();
+*/
 
 private:
     std::vector<Pair> entityPairs;

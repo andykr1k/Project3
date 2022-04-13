@@ -48,7 +48,7 @@ void EntityInstance::printInCSV(std::vector<std::string>keyValues) {
     }
 }
 
-double EntityInstance::getClose() {
+/*double EntityInstance::getClose() {
     for (int i = 0; i < entityPairs.size(); i++){
         if (entityPairs.at(i).attributeName() == "Close"){
             return entityPairs.at(i).numberValue();
@@ -150,4 +150,4 @@ double EntityInstance::getSignal() {
             return entityPairs.at(i).numberValue();
         }
     }
-}
+}*/
