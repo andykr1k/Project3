@@ -4,12 +4,8 @@
 
 #include "EntityInstance.hpp"
 
-void EntityInstance::print() {
-
-}
-
 void EntityInstance::printInJSON(int numSpaces) {
-    std::cout << "   {" << std::endl;
+    std::cout << std::setw(numSpaces) <<  "{" << std::endl;
     for (int i = 0; i < entityPairs.size(); i++){
 
         Pair pair = entityPairs.at(i);
@@ -18,7 +14,7 @@ void EntityInstance::printInJSON(int numSpaces) {
             std::cout << "," << std::endl;
         }
     }
-    std::cout << std::endl << "   }";
+    std::cout << std::endl << std::setw(numSpaces) << "}";
 }
 
 void EntityInstance::printInCSV(std::vector<std::string>keyValues) {
@@ -48,7 +44,7 @@ void EntityInstance::printInCSV(std::vector<std::string>keyValues) {
     }
 }
 
-/*double EntityInstance::getClose() {
+double EntityInstance::getClose() {
     for (int i = 0; i < entityPairs.size(); i++){
         if (entityPairs.at(i).attributeName() == "Close"){
             return entityPairs.at(i).numberValue();
@@ -145,9 +141,17 @@ double EntityInstance::getMacd() {
 }
 
 double EntityInstance::getSignal() {
-    for (int i = 0; i < entityPairs.size(); i++){
-        if (entityPairs.at(i).attributeName() == "Signal"){
+    for (int i = 0; i < entityPairs.size(); i++) {
+        if (entityPairs.at(i).attributeName() == "Signal") {
             return entityPairs.at(i).numberValue();
         }
     }
-}*/
+}
+
+double EntityInstance::getID() {
+    for (int i = 0; i < entityPairs.size(); i++) {
+        if (entityPairs.at(i).attributeName() == "id") {
+            return entityPairs.at(i).numberValue();
+        }
+    }
+}

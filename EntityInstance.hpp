@@ -13,12 +13,10 @@ public:
     void addPair(Pair &pair) { entityPairs.push_back(pair); };
     int numAttributes() { return entityPairs.size(); };
 
-    void print();
-
     void printInJSON(int numSpaces);
     void printInCSV(std::vector<std::string>keyValues);
 
-/*
+
     double getClose();
     double getOpen();
     double getHigh();
@@ -32,7 +30,8 @@ public:
     double getEma26();
     double getMacd();
     double getSignal();
-*/
+    double getID();
+
 
 private:
     std::vector<Pair> entityPairs;

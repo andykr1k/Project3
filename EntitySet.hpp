@@ -14,7 +14,6 @@ public:
 
     void addEntity(EntityInstance &instance) { instances.push_back(instance); };
     void changeEntity(int index, EntityInstance &instance) { instances.at(index) = instance; };
-    void print();
     std::vector<EntityInstance> getEntityInstances() { return instances; };
     void printInJSON(int numSpaces);
     void printInCSV(std::vector<std::string>keyValues);

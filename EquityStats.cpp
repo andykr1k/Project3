@@ -4,8 +4,20 @@
 
 #include "EquityStats.hpp"
 
-double EquityStats::calculateExponentialMovingAverage(int days) {
+void EquityStats::calculateExponentialMovingAverage(int days) {
+    if ( .size() < days){
+        return;
+    }
+    calculateSMA(days);
+    for (int i = 0; i < .size(); ++i) {
+
+    }
     return 0;
+}
+
+double EquityStats::calculateSMA(int) {
+    double avg = 0.0;
+
 }
 
 double EquityStats::calculateMACD() {
@@ -18,11 +30,11 @@ double EquityStats::calculateSignal(int days) {
 }
 
 void EquityStats::print(vector<string> attributesToPrint){
-/*    for (int i = 0; i < attributesToPrint.size(); i++){
-        for (int k = 0; i < ; k++){
-            if (attributesToPrint.at(i) == entityPairs.at(k).attributeName()){
-
-            }
-        }
-    }*/
+//    for (int i = 0; i < attributesToPrint.size(); i++){
+//        for (int k = 0; i < ; k++){
+//            if (attributesToPrint.at(i) == set.at(k).attributeName()){
+//
+//            }
+//        }
+//    }
 }
