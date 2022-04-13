@@ -21,9 +21,21 @@ std::string Pair::attributeName() {
 }
 
 void Pair::printInJSON(int numSpaces) {
-    std::cout << "\"" << _attributeName << "\""  <<" : " << _attributeStringValue << std::endl;
+    if (_attributeStringValue.empty()){
+        std::cout << std::fixed << "     \"" << _attributeName << "\""  <<" : " << _attributeNumberValue << std::endl;
+    } else {
+        std::cout << "     \"" << _attributeName << "\""  <<" : " << _attributeStringValue << std::endl;
+    }
 }
 
-void Pair::printInCSV() {
-    std::cout << _attributeStringValue << std::endl;
+void Pair::printInCSV(bool name) {
+    if (name){
+        std::cout << _attributeName << ",";
+    } else {
+        if (_attributeStringValue.empty()) {
+            std::cout << std::fixed << std::setprecision(4) << _attributeNumberValue << ",";
+        } else {
+            std::cout << _attributeStringValue << ",";
+        }
+    }
 }

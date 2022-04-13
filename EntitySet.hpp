@@ -10,7 +10,7 @@
 
 class EntitySet {
 public:
-    EntitySet();
+    EntitySet(): instances(){};
 
     void addEntity(EntityInstance &instance) { instances.push_back(instance); };
     void print();

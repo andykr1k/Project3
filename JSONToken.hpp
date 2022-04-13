@@ -19,7 +19,7 @@ public:
         _word = n;
         _isWord = true;
     }
-    void makeNumber(char n) {
+    void makeNumber(double n) {
         _number = n;
         _isNumber = true;
     }
@@ -28,7 +28,7 @@ public:
         _isSymbol = true;
     }
     //Gets variables from taken
-    char getNumber() { return _number; }
+    double getNumber() { return _number; }
     string getWord() { return _word; }
     char getSymbol() { return _symbol; }
 
@@ -53,7 +53,7 @@ public:
 
 private:
     string _word;
-    char _number;
+    double _number;
     char _symbol;
 
     bool _isSymbol;

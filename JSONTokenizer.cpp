@@ -38,7 +38,7 @@ JSONToken JSONTokenizer::getToken() {
 
     if ( isdigit(c) ){
         inputStream.putback(c);
-        char number;
+        double number;
         inputStream >> number;
         JSONToken token;
         token.makeNumber(number);
