@@ -9,18 +9,28 @@
 #include <iostream>
 class Pair {
 public:
-    Pair(std::string attributeName, std::string attributeValue){
-        _attributeName = attributeName;
-        _attributeStringValue = attributeValue;
-        _isNumber = false;
+    Pair(std::string attributeName,std::string attributeValue, double valueDouble, int valueInt, bool doubleQ, bool stringQ){
+        if (stringQ) {
+            _attributeName = attributeName;
+            _attributeStringValue = attributeValue;
+            _isNumber = false;
+        } else {
+            if (!doubleQ){
+                _attributeName = attributeName;
+                _isInt = true;
+                _isNumber = true;
+                _attributeIntValue = valueInt;
+            } else {
+                _attributeName = attributeName;
+                _attributeDoubleValue = valueDouble;
+                _isNumber = true;
+            }
+        }
     };
-    Pair(std::string attributeName, double value){
-        _attributeName = attributeName;
-        _attributeNumberValue = value;
-        _isNumber = true;
-    };
-    bool isDouble();
-    double numberValue();
+    bool isNumber() { return _isNumber; };
+    bool isInt() { return _isInt; };
+    double getDoubleValue() { return _attributeDoubleValue; };
+    int getIntValue() { return _attributeIntValue; };
     std::string stringValue();
     std::string attributeName();
     void printInJSON(int numSpaces);
@@ -28,8 +38,9 @@ public:
 
 private:
     std::string _attributeName, _attributeStringValue;
-    double _attributeNumberValue;
-    bool _isNumber;
+    double _attributeDoubleValue;
+    int _attributeIntValue;
+    bool _isNumber, _isInt;
 };
 
 

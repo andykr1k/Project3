@@ -4,14 +4,6 @@
 
 #include "Pair.hpp"
 
-bool Pair::isDouble() {
-    return _isNumber;
-}
-
-double Pair::numberValue() {
-    return _attributeNumberValue;
-}
-
 std::string Pair::stringValue() {
     return _attributeStringValue;
 }
@@ -22,7 +14,11 @@ std::string Pair::attributeName() {
 
 void Pair::printInJSON(int numSpaces) {
     if (_attributeStringValue.empty()){
-        std::cout << std::fixed << std::setprecision(11) << std::setw(numSpaces)<< "\"" << _attributeName << "\""  <<" : " << _attributeNumberValue;
+        if (_isInt){
+            std::cout << std::setw(numSpaces) << "\"" << _attributeName << "\"" << " : " << _attributeIntValue;
+        } else {
+            std::cout << std::fixed << std::setprecision(11) << std::setw(numSpaces) << "\"" << _attributeName << "\"" << " : " << _attributeDoubleValue;
+        }
     } else {
         std::cout << std::setw(numSpaces) << "\"" << _attributeName << "\""  <<" : \"" << _attributeStringValue << "\"";
     }
@@ -30,7 +26,11 @@ void Pair::printInJSON(int numSpaces) {
 
 void Pair::printInCSV(bool name) {
     if (_attributeStringValue.empty()){
-        std::cout << std::fixed << std::setprecision(4)  << _attributeNumberValue;
+        if (_isInt){
+            std::cout << _attributeIntValue;
+        } else {
+            std::cout << std::fixed << std::setprecision(4) << _attributeDoubleValue;
+        }
     } else {
         std::cout << _attributeStringValue;
     }

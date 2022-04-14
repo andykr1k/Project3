@@ -12,35 +12,40 @@ Pair JSONParser::parseAPair() {
     JSONToken token = tokenizer.getToken();
     string name;
 
-    //grabs name for token
     token = tokenizer.getToken();
     name = token.getWord();
 
-    //grabs the uselsess colon
     token = tokenizer.getToken();
     string colon = token.getWord();
 
-    //tokenizer.getToken();
     string secondName;
     double value;
+    int valueInt = -7777;
     token = tokenizer.getToken();
-    if (token.isNumber()){
-        value = token.getNumber();
-    }
-    else{
+    if (token.isDouble()){
+        value = token.getDouble();
+    } else if (token.isInt()) {
+        valueInt = token.getInt();
+    } else {
         token = tokenizer.getToken();
         secondName = token.getWord();
     }
 
     if(secondName.empty()){
-        Pair pair(name,value);
+        if ( valueInt == -7777 ){
+            cout << name << value;
+            Pair pair(name,secondName, value, valueInt, true, false);
+            return pair;
+        } else {
+            cout << name << valueInt;
+            Pair pair(name,secondName, value, valueInt, false, false);
+            return pair;
+        }
+    } else{
+        cout << name << secondName;
+        Pair pair(name, secondName, value, valueInt, false, true);
         return pair;
     }
-    else{
-        Pair pair(name, secondName);
-        return pair;
-    }
-
 }
 
 EntityInstance JSONParser::parseJSONObject() {
@@ -72,7 +77,7 @@ EntitySet JSONParser::parseJSONEntity() {
 
     JSONToken token = tokenizer.getToken();
     if( ! token.isOBracket() ) {
-        std::cout << "Error: JSONParser::parseJSONObject: Expected an open brace, but found" << std::endl;
+        std::cout << "Error: JSONParser::parseJSONObject: Expected an open bracket, but found" << std::endl;
         token.print();
         std::cout << "Terminating..." << std::endl;
         exit(1);
@@ -85,7 +90,7 @@ EntitySet JSONParser::parseJSONEntity() {
     } while( token.isComma() );
 
     if( ! token.isCBracket() ) {
-        std::cout << "Error: JSONParser::parseJSONObject: Expected an close brace, but found" << std::endl;
+        std::cout << "Error: JSONParser::parseJSONObject: Expected an close bracket, but found" << std::endl;
         token.print();
         std::cout << "Terminating..." << std::endl;
         exit(1);

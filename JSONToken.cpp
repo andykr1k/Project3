@@ -11,29 +11,27 @@ void JSONToken::print(){
     if (isOBracket()) {
         cout << getSymbol() << endl;
     } else if (isCBracket()){
-        cout << endl;
-        cout << getSymbol();
+        cout << getSymbol() << endl;
     } else if (isCBrace()){
-        cout << endl;
-        cout << getSymbol();
+        cout << getSymbol() << endl;
     } else if (isOBrace()){
         cout << getSymbol() << endl;
     } else if (isQuote()){
-        //Print Nothing
+        cout << getSymbol() << endl;
     } else if (isHyphen()){
-        cout << getSymbol();
+        cout << getSymbol() << endl;
     } else if (isDot()){
-        cout << getSymbol();
+        cout << getSymbol() << endl;
     } else if (isComma()){
-        cout << endl;
         cout << getSymbol() << endl;
     } else if (isColon()){
-        cout << endl;
         cout << getSymbol() << endl;
     } else if (isWord()){
-        cout << getWord();
-    } else if (isNumber()){
-        cout << getNumber();
+        cout << getWord() << endl;
+    } else if (isDouble()){
+        cout << getDouble() << endl;
+    } else if (isInt()){
+        cout << getInt() << endl;
     } else {
         cout << "No Token";
     }

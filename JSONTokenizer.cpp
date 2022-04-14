@@ -42,29 +42,58 @@ JSONToken JSONTokenizer::getToken() {
         inputStream.putback(c);
         string number;
         inputStream >> number;
+        bool Defdouble = false;
+        for ( int i = 0; i < number.size(); i++ ){
+            if ( number[i] == '.'){
+                Defdouble = true;
+            }
+        }
         if(number[number.length()-1] == ',') {
             if (isdigit(number[number.length() - 2])) {
                 inputStream.putback(number[number.length() - 1]);
-                JSONToken token;
-                token.makeNumber(stod(number));
-                return token;
+                if (Defdouble){
+                    JSONToken token;
+                    token.makeDouble(stod(number));
+//                    cout << "Made Double" << endl;
+//                    token.print();
+                    return token;
+                } else {
+                    JSONToken token;
+                    token.makeInt(stoi(number));
+//                    cout << "Made Int" << endl;
+//                    token.print();
+                    return token;
+                }
             } else if (number[number.length() - 2] == '"') {
                 inputStream.putback(number[number.length() - 1]);
                 number = number.substr(0, number.length() - 2);
                 JSONToken token;
                 token.makeWord(number);
+//                cout << "Made Word" << endl;
+//                token.print();
                 return token;
             }
         }
         else {
             if (isdigit(number[number.length() - 1])) {
-                JSONToken token;
-                token.makeNumber(stod(number));
-                return token;
+                if (Defdouble){
+                    JSONToken token;
+                    token.makeDouble(stod(number));
+//                    cout << "Made Double" << endl;
+//                    token.print();
+                    return token;
+                } else {
+                    JSONToken token;
+                    token.makeInt(stoi(number));
+//                    cout << "Made Int" << endl;
+                    return token;
+                }
             } else if (number[number.length() - 1] == '"') {
                 number = number.substr(0, number.length() - 1);
                 JSONToken token;
                 token.makeWord(number);
+//                cout << "Made Word" << endl;
+//                token.print();
                 return token;
             }
         }

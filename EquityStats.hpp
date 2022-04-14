@@ -13,7 +13,7 @@ using namespace std;
 
 class EquityStats {
 public:
-    EquityStats( EntityInstance &instanceOfEntitySet ): attributesToPrint{} instanceCopy{instanceOfEntitySet} {};
+    EquityStats( EntityInstance &instanceOfEntitySet ): attributesToPrint{} {};
 
     void calculateExponentialMovingAverage(int);
     double calculateSMA(int);
@@ -22,7 +22,7 @@ public:
     void print(vector<string> attributes);
 private:
     vector<string> attributesToPrint;
-    EntityInstance instanceCopy{};
+    EntityInstance instanceCopy;
 };
 
 
