@@ -13,8 +13,8 @@ public:
     EntitySet(): instances(){};
 
     void addEntity(EntityInstance &instance) { instances.push_back(instance); };
-    void changeEntity(int index, EntityInstance &instance) { instances.at(index) = instance; };
-    std::vector<EntityInstance> getEntityInstances() { return instances; };
+    void changeInstance(int index, EntityInstance &instance) { instances.at(index) = instance; };
+    std::vector<EntityInstance> &getEntityInstances() { return instances; };
     void printInJSON(int numSpaces);
     void printInCSV(std::vector<std::string>keyValues);
 

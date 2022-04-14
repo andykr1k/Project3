@@ -15,6 +15,7 @@ public:
     JSONTokenizer(string inputFile);
     JSONToken getToken();
     bool isSymbol(char c);
+    bool isNegativeSign(char c);
 
 private:
     string inputFileName;

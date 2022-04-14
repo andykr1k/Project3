@@ -11,7 +11,15 @@ JSONTokenizer::JSONTokenizer(std::string inputFile): inputFileName{inputFile}{
 }
 
 bool JSONTokenizer::isSymbol(char c) {
-    if(c == ',' || c == ':' || c == '{' || c == '}' || c == '[' || c == ']' || c == '"' || c== '-' || c=='.') {
+    if(c == ',' || c == ':' || c == '{' || c == '}' || c == '[' || c == ']' || c == '"' || c=='-' || c=='.') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool JSONTokenizer::isNegativeSign(char c) {
+    if(c=='-') {
         return true;
     } else {
         return false;
@@ -32,10 +40,38 @@ JSONToken JSONTokenizer::getToken() {
         return token;
     }
 
-    if(isSymbol(c)){
+    if(isSymbol(c) && !isNegativeSign(c)){
         JSONToken token;
         token.makeSymbol(c);
         return token;
+    }
+
+    if (isNegativeSign(c)){
+        inputStream.putback(c);
+        string number;
+        inputStream >> number;
+        bool Defdouble = false;
+        for ( int i = 0; i < number.size(); i++ ){
+//            cout << number[i] << endl;
+            if ( number[i] == '.'){
+                Defdouble = true;
+            }
+        }
+        if (Defdouble){
+            JSONToken token;
+            token.makeDouble(stod(number));
+//            cout << "Made Double" << endl;
+//            token.print();
+            inputStream.putback(number[number.length() - 1]);
+            return token;
+        } else {
+            JSONToken token;
+            token.makeInt(stoi(number));
+//            cout << "Made Int" << endl;
+//            token.print();
+            inputStream.putback(number[number.length() - 1]);
+            return token;
+        }
     }
 
     if( isdigit(c) ){

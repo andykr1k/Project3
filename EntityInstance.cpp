@@ -30,132 +30,128 @@ void EntityInstance::printInCSV(std::vector<std::string>keyValues) {
                 } else {
                     std::cout << entityPairs.at(j).stringValue();
                 }
-                if ( i < keyValues.size() - 1){
-                    std::cout << ",";
-                    break;
-                }
+//                if ( i < keyValues.size() - 1){
+//                    std::cout << ",";
+//                }
             } else {
                 if ( j + 1 == entityPairs.size()) {
                     std::cout << "";
                     if ( i < keyValues.size() - 1){
                         std::cout << ",";
-                        break;
                     }
-                    break;
                 }
             }
         }
     }
 }
 
-//double EntityInstance::getClose() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "Close"){
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
-//
-//double EntityInstance::getOpen() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "Open"){
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
-//
-//double EntityInstance::getHigh() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "High"){
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
-//
-//double EntityInstance::getLow() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "Low"){
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
-//
-//double EntityInstance::getVolume() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "Volume"){
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
-//
-//double EntityInstance::getDividends() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "Dividends"){
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
-//
-//double EntityInstance::getStocksplits() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "Stock Splits"){
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
-//
-//std::string EntityInstance::getDate() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "Date"){
-//            return entityPairs.at(i).stringValue();
-//        }
-//    }
-//}
-//
-//std::string EntityInstance::getTimestamp() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "Timestamp"){
-//            return entityPairs.at(i).stringValue();
-//        }
-//    }
-//}
-//
-//double EntityInstance::getEma12() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "EMA-12"){
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
-//
-//double EntityInstance::getEma26() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "EMA-26"){
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
-//
-//double EntityInstance::getMacd() {
-//    for (int i = 0; i < entityPairs.size(); i++){
-//        if (entityPairs.at(i).attributeName() == "MACD"){
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
-//
-//double EntityInstance::getSignal() {
-//    for (int i = 0; i < entityPairs.size(); i++) {
-//        if (entityPairs.at(i).attributeName() == "Signal") {
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
-//
-//double EntityInstance::getID() {
-//    for (int i = 0; i < entityPairs.size(); i++) {
-//        if (entityPairs.at(i).attributeName() == "id") {
-//            return entityPairs.at(i).numberValue();
-//        }
-//    }
-//}
+double EntityInstance::getSMA() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "Close"){
+            return entityPairs.at(i).getDoubleValue();
+        }
+    }
+}
+double EntityInstance::getClose() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "Close"){
+            return entityPairs.at(i).getDoubleValue();
+        }
+    }
+}
+
+double EntityInstance::getOpen() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "Open"){
+            return entityPairs.at(i).getDoubleValue();
+        }
+    }
+}
+
+double EntityInstance::getHigh() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "High"){
+            return entityPairs.at(i).getDoubleValue();
+        }
+    }
+}
+
+double EntityInstance::getLow() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "Low"){
+            return entityPairs.at(i).getDoubleValue();
+        }
+    }
+}
+
+int EntityInstance::getVolume() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "Volume"){
+            return entityPairs.at(i).getIntValue();
+        }
+    }
+}
+
+int EntityInstance::getDividends() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "Dividends"){
+            return entityPairs.at(i).getIntValue();
+        }
+    }
+}
+
+int EntityInstance::getStocksplits() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "Stock Splits"){
+            return entityPairs.at(i).getIntValue();
+        }
+    }
+}
+
+std::string EntityInstance::getDate() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "Date"){
+            return entityPairs.at(i).stringValue();
+        }
+    }
+}
+
+std::string EntityInstance::getTimestamp() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "Timestamp"){
+            return entityPairs.at(i).stringValue();
+        }
+    }
+}
+
+double EntityInstance::getEma12() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "EMA-12"){
+            return entityPairs.at(i).getDoubleValue();
+        }
+    }
+}
+
+double EntityInstance::getEma26() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "EMA-26"){
+            return entityPairs.at(i).getDoubleValue();
+        }
+    }
+}
+
+double EntityInstance::getMacd() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "MACD"){
+            return entityPairs.at(i).getDoubleValue();
+        }
+    }
+}
+
+double EntityInstance::getSignal() {
+    for (int i = 0; i < entityPairs.size(); i++) {
+        if (entityPairs.at(i).attributeName() == "Signal") {
+            return entityPairs.at(i).getDoubleValue();
+        }
+    }
+}

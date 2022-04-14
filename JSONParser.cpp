@@ -4,45 +4,57 @@
 #include <cstdlib>
 #include <string>
 #include <memory>
+#include <cassert>
 using namespace std;
 
 
 Pair JSONParser::parseAPair() {
 
     JSONToken token = tokenizer.getToken();
+//    cout << "Before name: ";
+//    token.print();
     string name;
 
     token = tokenizer.getToken();
+//    cout << "Before word: ";
+//    token.print();
     name = token.getWord();
 
     token = tokenizer.getToken();
+//    cout << "Before colon: ";
+//    token.print();
     string colon = token.getWord();
 
     string secondName;
     double value;
     int valueInt = -7777;
+
     token = tokenizer.getToken();
+//        token.print();
     if (token.isDouble()){
+//        cout << "is double hit!";
         value = token.getDouble();
     } else if (token.isInt()) {
+//        cout << "is int hit!";
         valueInt = token.getInt();
     } else {
+//        cout << "is word hit!";
         token = tokenizer.getToken();
         secondName = token.getWord();
     }
 
     if(secondName.empty()){
         if ( valueInt == -7777 ){
-            cout << name << value;
+            //cout << "is Double " << name << value;
             Pair pair(name,secondName, value, valueInt, true, false);
             return pair;
         } else {
-            cout << name << valueInt;
+            //cout << "is Int" << name << valueInt;
             Pair pair(name,secondName, value, valueInt, false, false);
             return pair;
         }
     } else{
-        cout << name << secondName;
+        //cout << "Is word" << name << secondName;
         Pair pair(name, secondName, value, valueInt, false, true);
         return pair;
     }

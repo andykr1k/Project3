@@ -16,21 +16,20 @@ public:
     void printInJSON(int numSpaces);
     void printInCSV(std::vector<std::string>keyValues);
 
-
-//    double getClose();
-//    double getOpen();
-//    double getHigh();
-//    double getLow();
-//    double getVolume();
-//    double getDividends();
-//    double getStocksplits();
-//    std::string getDate();
-//    std::string getTimestamp();
-//    double getEma12();
-//    double getEma26();
-//    double getMacd();
-//    double getSignal();
-//    double getID();
+    double getSMA();
+    double getClose();
+    double getOpen();
+    double getHigh();
+    double getLow();
+    int getVolume();
+    int getDividends();
+    int getStocksplits();
+    std::string getDate();
+    std::string getTimestamp();
+    double getEma12();
+    double getEma26();
+    double getMacd();
+    double getSignal();
 
 
 private:

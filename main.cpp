@@ -7,6 +7,7 @@
 #include "EntitySet.hpp"
 #include "Pair.hpp"
 #include "JSONParser.hpp"
+#include "EquityStats.hpp"
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -17,13 +18,13 @@ int main(int argc, char *argv[]) {
     JSONParser parser3(argv[2]);
     EntitySet set = parser3.parseJSONEntity();
 
+    std::vector<string> keys = {"Date","Open","High","Low","Close","Volume","EMA-12","EMA-26","MACD","Signal"};
     string argument = argv[1];
 
     if (argument == "-json"){
         set.printInJSON(5);
     }
     if (argument == "-csv"){
-        std::vector<string> keys = {"Date","Open","High","Low","Close","Volume","EMA-12","EMA-26","MACD","Signal"};
         set.printInCSV(keys);
         cout << endl;
         for (int i = 0; i < set.getEntityInstances().size(); i++) {
@@ -32,14 +33,12 @@ int main(int argc, char *argv[]) {
         }
     }
 
-
-    //string name = "Andy";
-    //double number = 101.101;
-    //Pair pair = Pair(name,number);
-    //EntityInstance instance1 = set.getEntityInstances().at(1);
-    //instance1.addPair(pair);
-    //set.changeEntity(1,instance1);
-    //set.printInJSON(5);
-
+    EquityStats stats = EquityStats( set );
+    stats.calculateExponentialMovingAverage(12);
+    stats.calculateExponentialMovingAverage(26);
+    stats.calculateMACD();
+    stats.print(keys);
+    //stats.returnSet().getEntityInstances().at(0).printInCSV(keys);
+    //stats.print(keys);
     return 0;
 }

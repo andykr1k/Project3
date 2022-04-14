@@ -14,10 +14,10 @@ std::string Pair::attributeName() {
 
 void Pair::printInJSON(int numSpaces) {
     if (_attributeStringValue.empty()){
-        if (_isInt){
+        if (getDoubleValue() == int(getDoubleValue())){
             std::cout << std::setw(numSpaces) << "\"" << _attributeName << "\"" << " : " << _attributeIntValue;
         } else {
-            std::cout << std::fixed << std::setprecision(11) << std::setw(numSpaces) << "\"" << _attributeName << "\"" << " : " << _attributeDoubleValue;
+            std::cout << std::fixed << std::setprecision(4) << std::setw(numSpaces) << "\"" << _attributeName << "\"" << " : " << _attributeDoubleValue;
         }
     } else {
         std::cout << std::setw(numSpaces) << "\"" << _attributeName << "\""  <<" : \"" << _attributeStringValue << "\"";
@@ -26,7 +26,7 @@ void Pair::printInJSON(int numSpaces) {
 
 void Pair::printInCSV(bool name) {
     if (_attributeStringValue.empty()){
-        if (_isInt){
+        if (getDoubleValue() == int(getDoubleValue())){
             std::cout << _attributeIntValue;
         } else {
             std::cout << std::fixed << std::setprecision(4) << _attributeDoubleValue;
