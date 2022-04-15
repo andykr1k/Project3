@@ -21,10 +21,10 @@ public:
         for (int i = 0; i < returnSet().getEntityInstances().size(); i++) {
             if (i > days - 1){
                 if ( days == 12){
-                    average = (returnSet().getEntityInstances().at(i).getClose() * soothingFactor(i - 1)) + (returnSet().getEntityInstances().at(i-1).getEma12() * (1.0 - soothingFactor(i - 1)));
+                    average = returnSet().getEntityInstances().at(i).getClose() * soothingFactor(i + 1) + returnSet().getEntityInstances().at(i-1).getEma12() * (1.0 - soothingFactor(i + 1));
                 }
                 if (days == 26){
-                    average = (returnSet().getEntityInstances().at(i).getClose() * soothingFactor(i - 1)) + (returnSet().getEntityInstances().at(i-1).getEma26() * (1.0 - soothingFactor(i - 1)));
+                    average = returnSet().getEntityInstances().at(i).getClose() * soothingFactor(i + 1) + returnSet().getEntityInstances().at(i-1).getEma26() * (1.0 - soothingFactor(i + 1));
                 }
                 Pair pair = Pair(attributeName, "", average, 0, true, false);
                 returnSet().getEntityInstances().at(i).addPair(pair);

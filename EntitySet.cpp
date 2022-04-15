@@ -7,7 +7,6 @@
 void EntitySet::printInJSON(int numSpaces) {
     std::cout << "[" << std::endl ;
     for (int i = 0; i < instances.size(); i++){
-
         EntityInstance instance = instances.at(i);
         instance.printInJSON(3);
         if (i < instances.size() - 1) {

@@ -18,7 +18,6 @@ int main(int argc, char *argv[]) {
     JSONParser parser3(argv[2]);
     EntitySet set = parser3.parseJSONEntity();
 
-    std::vector<string> keys = {"Date","Close","EMA-12","EMA-26","MACD","Signal"};
     string argument = argv[1];
 
     EquityStats stats = EquityStats( set );
@@ -33,6 +32,7 @@ int main(int argc, char *argv[]) {
         stats.printJSON(5);
     }
     if (argument == "-csv"){
+        std::vector<string> keys = {"Date","Open","High","Low","Close","Volume","EMA-12","EMA-26","MACD","Signal"};
         stats.printCSV(keys);
     }
 
