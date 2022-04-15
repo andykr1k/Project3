@@ -16,7 +16,6 @@ public:
     void printInJSON(int numSpaces);
     void printInCSV(std::vector<std::string>keyValues);
 
-    double getSMA();
     double getClose();
     double getOpen();
     double getHigh();

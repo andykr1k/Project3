@@ -7,7 +7,6 @@
 void EntityInstance::printInJSON(int numSpaces) {
     std::cout << std::setw(numSpaces) <<  "{" << std::endl;
     for (int i = 0; i < entityPairs.size(); i++){
-
         Pair pair = entityPairs.at(i);
         pair.printInJSON(5);
         if (i < entityPairs.size() - 1) {
@@ -23,16 +22,13 @@ void EntityInstance::printInCSV(std::vector<std::string>keyValues) {
             if (keyValues.at(i) == entityPairs.at(j).attributeName()){
                 if (entityPairs.at(j).stringValue().empty()){
                     if (entityPairs.at(j).isInt()){
-                        std::cout << entityPairs.at(j).getIntValue();
+                        entityPairs.at(j).printInCSV(false);
                     } else {
-                        std::cout << entityPairs.at(j).getDoubleValue();
+                        entityPairs.at(j).printInCSV(false);
                     }
                 } else {
-                    std::cout << entityPairs.at(j).stringValue();
+                    entityPairs.at(j).printInCSV(true);
                 }
-//                if ( i < keyValues.size() - 1){
-//                    std::cout << ",";
-//                }
             } else {
                 if ( j + 1 == entityPairs.size()) {
                     std::cout << "";
@@ -41,14 +37,6 @@ void EntityInstance::printInCSV(std::vector<std::string>keyValues) {
                     }
                 }
             }
-        }
-    }
-}
-
-double EntityInstance::getSMA() {
-    for (int i = 0; i < entityPairs.size(); i++){
-        if (entityPairs.at(i).attributeName() == "Close"){
-            return entityPairs.at(i).getDoubleValue();
         }
     }
 }

@@ -25,7 +25,7 @@ void Pair::printInJSON(int numSpaces) {
 }
 
 void Pair::printInCSV(bool name) {
-    if (_attributeStringValue.empty()){
+    if (!name){
         if (getDoubleValue() == int(getDoubleValue())){
             std::cout << _attributeIntValue;
         } else {
