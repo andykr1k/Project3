@@ -3,7 +3,7 @@ Andrew Krikorian
 
 CS315
 
-I have not shared or looked at anyone else code.
+This program needs to use json_pp files as input.
 
 All features are implemented as necessary.
 
