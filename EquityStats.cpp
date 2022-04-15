@@ -3,7 +3,6 @@
 //
 
 #include "EquityStats.hpp"
-#include "EntitySet.hpp"
 #include <iostream>
 #include <string>
 #include <vector>

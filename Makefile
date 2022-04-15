@@ -21,7 +21,10 @@ JSONParser.o: JSONParser.cpp JSONParser.hpp EntityInstance.hpp Pair.hpp EntitySe
 	g++ -std=c++17 JSONParser.cpp -o JSONParser.o -c
 
 EquityStats.o: EquityStats.cpp EquityStats.hpp EntitySet.hpp EntityInstance.hpp Pair.hpp
-	g++ -std=c++17 EquityStats.cpp -o EntityStats.o -c
+	g++ -std=c++17 EquityStats.cpp -o EquityStats.o -c
 
 main.o: main.cpp JSONToken.hpp JSONTokenizer.hpp EntityInstance.hpp Pair.hpp EntitySet.hpp JSONParser.hpp EquityStats.hpp
 	g++ -std=c++17 main.cpp -o main.o -c
+
+clean:
+	/bin/rm -f project3.x EntitySet.o EntityInstance.o Pair.o JSONToken.o JSONTokenizer.o JSONParser.o EquityStats.o main.o
