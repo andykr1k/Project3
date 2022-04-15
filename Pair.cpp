@@ -27,7 +27,7 @@ void Pair::printInJSON(int numSpaces) {
 void Pair::printInCSV(bool name) {
     if (!name){
         if ((!_isNumber) && _isInt){
-            std::cout << _attributeIntValue;
+            std::cout << int(_attributeIntValue);
         } else {
             std::cout << std::fixed << std::setprecision(4) << _attributeDoubleValue;
         }
