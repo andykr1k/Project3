@@ -39,10 +39,10 @@ Pair JSONParser::parseAPair() {
             return pair;
         } else {
             Pair pair(name,secondName, value, valueInt, false, false);
+            valueInt = -7777;
             return pair;
         }
     } else{
-        //cout << "Is word" << name << secondName;
         Pair pair(name, secondName, value, valueInt, false, true);
         return pair;
     }
