@@ -61,14 +61,14 @@ JSONToken JSONTokenizer::getToken() {
             JSONToken token;
             token.makeDouble(stod(number));
 //            cout << "Made Double" << endl;
-//            token.print();
+//            token.printCSV();
             inputStream.putback(number[number.length() - 1]);
             return token;
         } else {
             JSONToken token;
             token.makeInt(stoi(number));
 //            cout << "Made Int" << endl;
-//            token.print();
+//            token.printCSV();
             inputStream.putback(number[number.length() - 1]);
             return token;
         }
@@ -91,13 +91,13 @@ JSONToken JSONTokenizer::getToken() {
                     JSONToken token;
                     token.makeDouble(stod(number));
 //                    cout << "Made Double" << endl;
-//                    token.print();
+//                    token.printCSV();
                     return token;
                 } else {
                     JSONToken token;
                     token.makeInt(stoi(number));
 //                    cout << "Made Int" << endl;
-//                    token.print();
+//                    token.printCSV();
                     return token;
                 }
             } else if (number[number.length() - 2] == '"') {
@@ -106,7 +106,7 @@ JSONToken JSONTokenizer::getToken() {
                 JSONToken token;
                 token.makeWord(number);
 //                cout << "Made Word" << endl;
-//                token.print();
+//                token.printCSV();
                 return token;
             }
         }
@@ -116,7 +116,7 @@ JSONToken JSONTokenizer::getToken() {
                     JSONToken token;
                     token.makeDouble(stod(number));
 //                    cout << "Made Double" << endl;
-//                    token.print();
+//                    token.printCSV();
                     return token;
                 } else {
                     JSONToken token;
@@ -129,7 +129,7 @@ JSONToken JSONTokenizer::getToken() {
                 JSONToken token;
                 token.makeWord(number);
 //                cout << "Made Word" << endl;
-//                token.print();
+//                token.printCSV();
                 return token;
             }
         }

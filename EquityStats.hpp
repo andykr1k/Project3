@@ -17,12 +17,25 @@ public:
 
     void calculateExponentialMovingAverage(int days){
         string attributeName = "EMA-" + to_string(days);
-        double yesterdaySMA = calculateSMA(days, days - 1);
         double average;
         for (int i = 0; i < returnSet().getEntityInstances().size(); i++) {
-            if (i >= days - 1){
-                average = (returnSet().getEntityInstances().at(i).getClose() * soothingFactor(days)) + (yesterdaySMA * (1 -
-                                                                                                                     soothingFactor(days)));
+            if (i > days - 1){
+                if ( days == 12){
+                    average = (returnSet().getEntityInstances().at(i).getClose() * soothingFactor(i - 1)) + (returnSet().getEntityInstances().at(i-1).getEma12() * (1.0 - soothingFactor(i - 1)));
+                }
+                if (days == 26){
+                    average = (returnSet().getEntityInstances().at(i).getClose() * soothingFactor(i - 1)) + (returnSet().getEntityInstances().at(i-1).getEma26() * (1.0 - soothingFactor(i - 1)));
+                }
+                Pair pair = Pair(attributeName, "", average, 0, true, false);
+                returnSet().getEntityInstances().at(i).addPair(pair);
+            }
+            if (i == days - 1){
+                if ( days == 12){
+                    average = returnSet().getEntityInstances().at(i).getSMA12();
+                }
+                if (days == 26){
+                    average = returnSet().getEntityInstances().at(i).getSMA26();
+                }
                 Pair pair = Pair(attributeName, "", average, 0, true, false);
                 returnSet().getEntityInstances().at(i).addPair(pair);
             }
@@ -32,10 +45,10 @@ public:
     void calculateMACD() {
         string name = "MACD";
         for (int i = 0; i < returnSet().getEntityInstances().size(); i++) {
-            double macd = returnSet().getEntityInstances().at(i).getEma12() - returnSet().getEntityInstances().at(i).getEma26();
             if ( i < 25){
 
             } else {
+                double macd = returnSet().getEntityInstances().at(i).getEma12() - returnSet().getEntityInstances().at(i).getEma26();
                 Pair pair = Pair(name, "", macd, 0, true, false);
                 returnSet().getEntityInstances().at(i).addPair(pair);
             }
@@ -44,12 +57,18 @@ public:
 
     double calculateSignal(int days){
         string name = "Signal";
+        double signal = 0.0;
+        double avg = 0.0;
         for (int i = 0; i < returnSet().getEntityInstances().size(); i++) {
-            double signal = returnSet().getEntityInstances().at(i).getEma12() - returnSet().getEntityInstances().at(i).getEma26();
             if ( i < 33){
 
             } else {
+                for (int j = 0; j < days; j++){
+                    avg += returnSet().getEntityInstances().at(i - j).getMacd();
+                }
+                signal = avg / days;
                 Pair pair = Pair(name, "", signal, 0, true, false);
+                avg = 0.0;
                 returnSet().getEntityInstances().at(i).addPair(pair);
             }
         }
@@ -57,34 +76,63 @@ public:
     };
 
     double soothingFactor(int days){
-        double daysToDouble = days;
-        double sooth = 2.0;
-        double soothingFactor = sooth / ( 1.0 + daysToDouble);
+        double soothingFactor = 2.0 / (1.0 + days);
         return soothingFactor;
     };
 
-    void print(vector<string> attributes){
+    void printCSV(vector<string> attributes){
         returnSet().printInCSV(attributes);
         cout << endl;
         for (int i = 0; i < attributes.size() - 1; i++){
             for (int k = 0; i < instanceCopy.getEntityInstances().size(); i++) {
                 returnSet().getEntityInstances().at(i).printInCSV(attributes);
+                if ( i < 33) {
+                    std::cout << ",";
+                }
                 cout << endl;
             }
         }
     };
 
+    void printJSON(int numSpaces){
+        cout << "[" << endl;
+        for (int i = 0; i < instanceCopy.getEntityInstances().size(); i++) {
+            returnSet().getEntityInstances().at(i).printInJSON(numSpaces);
+            if ( i < instanceCopy.getEntityInstances().size() - 1) {
+                std::cout << "," << endl;
+            }
+        }
+        cout << endl;
+        cout << "]" << endl;
+    };
+
     EntitySet &returnSet() { return instanceCopy; } ;
 
-    double calculateSMA(int days, int index){
+    void calculateSMA12() {
+        string name = "SMA-12";
         double avg = 0.0;
-        double daysToDouble = days;
 
-        for (int i = index; i >= index - (days - 1); i--) {
+        for (int i = 0; i < returnSet().getEntityInstances().size(); i++) {
             avg += returnSet().getEntityInstances().at(i).getClose();
+            double sma = (avg / (i + 1));
+            if (i >= 11){
+                Pair pair = Pair(name, "", sma, 0, true, false);
+                returnSet().getEntityInstances().at(i).addPair(pair);
+            }
         }
+    };
+    void calculateSMA26() {
+        string name = "SMA-26";
+        double avg = 0.0;
 
-        return avg/daysToDouble;
+        for (int i = 0; i < returnSet().getEntityInstances().size(); i++) {
+            avg += returnSet().getEntityInstances().at(i).getClose();
+            double sma = (avg / (i + 1));
+            if (i >= 25){
+                Pair pair = Pair(name, "", sma, 0, true, false);
+                returnSet().getEntityInstances().at(i).addPair(pair);
+            }
+        }
     };
 
 private:

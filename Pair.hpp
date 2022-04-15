@@ -18,7 +18,6 @@ public:
             if (!doubleQ){
                 _attributeName = attributeName;
                 _isInt = true;
-                _isNumber = true;
                 _attributeIntValue = valueInt;
             } else {
                 _attributeName = attributeName;

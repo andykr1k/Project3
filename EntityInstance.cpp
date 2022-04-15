@@ -5,15 +5,15 @@
 #include "EntityInstance.hpp"
 
 void EntityInstance::printInJSON(int numSpaces) {
-    std::cout << std::setw(numSpaces) <<  "{" << std::endl;
+    std::cout << std::setw(numSpaces - 1) <<  "{" << std::endl;
     for (int i = 0; i < entityPairs.size(); i++){
         Pair pair = entityPairs.at(i);
-        pair.printInJSON(5);
+        pair.printInJSON(numSpaces);
         if (i < entityPairs.size() - 1) {
             std::cout << "," << std::endl;
         }
     }
-    std::cout << std::endl << std::setw(numSpaces) << "}";
+    std::cout << std::endl << std::setw(numSpaces - 1) << "}";
 }
 
 void EntityInstance::printInCSV(std::vector<std::string>keyValues) {
@@ -46,6 +46,25 @@ double EntityInstance::getClose() {
             return entityPairs.at(i).getDoubleValue();
         }
     }
+    return 0.0;
+}
+
+double EntityInstance::getSMA12() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "SMA-12"){
+            return entityPairs.at(i).getDoubleValue();
+        }
+    }
+    return 0.0;
+}
+
+double EntityInstance::getSMA26() {
+    for (int i = 0; i < entityPairs.size(); i++){
+        if (entityPairs.at(i).attributeName() == "SMA-26"){
+            return entityPairs.at(i).getDoubleValue();
+        }
+    }
+    return 0.0;
 }
 
 double EntityInstance::getOpen() {
@@ -54,6 +73,8 @@ double EntityInstance::getOpen() {
             return entityPairs.at(i).getDoubleValue();
         }
     }
+    return 0.0;
+
 }
 
 double EntityInstance::getHigh() {
@@ -62,6 +83,8 @@ double EntityInstance::getHigh() {
             return entityPairs.at(i).getDoubleValue();
         }
     }
+    return 0.0;
+
 }
 
 double EntityInstance::getLow() {
@@ -70,6 +93,8 @@ double EntityInstance::getLow() {
             return entityPairs.at(i).getDoubleValue();
         }
     }
+    return 0.0;
+
 }
 
 int EntityInstance::getVolume() {
@@ -78,6 +103,8 @@ int EntityInstance::getVolume() {
             return entityPairs.at(i).getIntValue();
         }
     }
+    return 0.0;
+
 }
 
 int EntityInstance::getDividends() {
@@ -86,6 +113,8 @@ int EntityInstance::getDividends() {
             return entityPairs.at(i).getIntValue();
         }
     }
+    return 0.0;
+
 }
 
 int EntityInstance::getStocksplits() {
@@ -94,6 +123,8 @@ int EntityInstance::getStocksplits() {
             return entityPairs.at(i).getIntValue();
         }
     }
+    return 0.0;
+
 }
 
 std::string EntityInstance::getDate() {
@@ -102,6 +133,8 @@ std::string EntityInstance::getDate() {
             return entityPairs.at(i).stringValue();
         }
     }
+    return "";
+
 }
 
 std::string EntityInstance::getTimestamp() {
@@ -110,6 +143,8 @@ std::string EntityInstance::getTimestamp() {
             return entityPairs.at(i).stringValue();
         }
     }
+    return "";
+
 }
 
 double EntityInstance::getEma12() {
@@ -118,6 +153,8 @@ double EntityInstance::getEma12() {
             return entityPairs.at(i).getDoubleValue();
         }
     }
+    return 0.0;
+
 }
 
 double EntityInstance::getEma26() {
@@ -126,6 +163,8 @@ double EntityInstance::getEma26() {
             return entityPairs.at(i).getDoubleValue();
         }
     }
+    return 0.0;
+
 }
 
 double EntityInstance::getMacd() {
@@ -134,6 +173,8 @@ double EntityInstance::getMacd() {
             return entityPairs.at(i).getDoubleValue();
         }
     }
+    return 0.0;
+
 }
 
 double EntityInstance::getSignal() {
@@ -142,4 +183,6 @@ double EntityInstance::getSignal() {
             return entityPairs.at(i).getDoubleValue();
         }
     }
+    return 0.0;
+
 }
