@@ -35,6 +35,40 @@ void EquityStats::calculateExponentialMovingAverage(int days){
     }
 };
 
+void EquityStats::calculateStratDay(){
+    string name = "StratDay";
+    string nameUp = "Upside Day";
+    string nameDown = "Downside Day";
+    string nameInside = "Inside Day";
+    string nameOutside = "Outside Day";
+
+    for (int i = 0; i < returnSet().getEntityInstances().size(); i++) {
+        if ( i < 1){
+
+        } else {
+            if (returnSet().getEntityInstances().at(i).getHigh() > returnSet().getEntityInstances().at(i - 1).getHigh()){
+                if (returnSet().getEntityInstances().at(i).getLow() < returnSet().getEntityInstances().at(i - 1).getLow()){
+                    Pair pair = Pair(name, nameOutside, 0.0, 0, false, true);
+                    returnSet().getEntityInstances().at(i).addPair(pair);
+                } else {
+                    Pair pair = Pair(name, nameUp, 0.0, 0, false, true);
+                    returnSet().getEntityInstances().at(i).addPair(pair);
+                }
+            }
+
+            if (returnSet().getEntityInstances().at(i).getHigh() <= returnSet().getEntityInstances().at(i - 1).getHigh()){
+                if (returnSet().getEntityInstances().at(i).getLow() >= returnSet().getEntityInstances().at(i - 1).getLow()){
+                    Pair pair = Pair(name, nameInside, 0.0, 0, false, true);
+                    returnSet().getEntityInstances().at(i).addPair(pair);
+                } else {
+                    Pair pair = Pair(name, nameDown, 0.0, 0, false, true);
+                    returnSet().getEntityInstances().at(i).addPair(pair);
+                }
+            }
+        }
+    }
+}
+
 void EquityStats::calculateMACD() {
     string name = "MACD";
     for (int i = 0; i < returnSet().getEntityInstances().size(); i++) {

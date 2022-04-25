@@ -26,6 +26,14 @@ bool JSONTokenizer::isNegativeSign(char c) {
     }
 }
 
+bool JSONTokenizer::isQuote(char c) {
+    if(c=='"') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 JSONToken JSONTokenizer::getToken() {
     if(!inputStream.is_open()){
         std::cout << "Input stream in JSONTokenizer::getToken is not open. Terminating...\n";

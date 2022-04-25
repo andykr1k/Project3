@@ -118,7 +118,7 @@ public:
 //    };
 
     EntitySet &returnSet() { return instanceCopy; } ;
-
+    void calculateStratDay();
     void calculateSMA12();
 //    {
 //        string name = "SMA-12";

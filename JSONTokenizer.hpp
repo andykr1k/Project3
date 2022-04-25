@@ -16,6 +16,7 @@ public:
     JSONToken getToken();
     bool isSymbol(char c);
     bool isNegativeSign(char c);
+    bool isQuote(char c);
 
 private:
     string inputFileName;

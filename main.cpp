@@ -27,6 +27,7 @@ int main(int argc, char *argv[]) {
     stats.calculateExponentialMovingAverage(26);
     stats.calculateMACD();
     stats.calculateSignal(9);
+    stats.calculateStratDay();
 
     if (argument == "-json"){
         stats.printJSON(5);
